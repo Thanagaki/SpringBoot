@@ -1,0 +1,42 @@
+
+  <!DOCTYPE html>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>ALL USERS FROM DB BY HIBERNATE</title>
+  </head>
+<body>
+<h1> All Users</h1>
+<table class="table table-dark", border="1">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Age</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr th:each="user:${users}">
+    <td th:text="${user.name}"> name</td>
+    <td th:text="${user.surname}"> surname</td>
+    <td th:text="${user.email}"> email</td>
+    <td th:text="${user.age}"> age</td>
+    <td> <a th:href="@{/users/{id}/edit(id=${user.id})}" /> Edit</td>
+    <td> <form th:method="DELETE" th:action="@{/users/{id}(id=${user.id})}"/>
+      <input type="submit" value="Delete"/> </td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/users/new}">Add User</a>
+
+</body>
+</html>
+</head>
+<body>
+
+</body>
+</html>
